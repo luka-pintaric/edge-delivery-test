@@ -1,5 +1,5 @@
 mountpoints:
   /:
-    url: "https://74cb-93-137-125-71.ngrok-free.app/bin/franklin.delivery/luka-pintaric/edge-delivery-test/main"
+    url: "https://localhost:8443/bin/franklin.delivery/luka-pintaric/edge-delivery-test/main"
     type: "markup"
     suffix: ".html"
