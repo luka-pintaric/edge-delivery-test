@@ -1,5 +1,3 @@
-import { addChildElement } from "../../utils/htmlUtils";
-
 export default function decorate(block) {
   // const data = fetchData(block);
 
