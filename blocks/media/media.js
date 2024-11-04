@@ -1,16 +1,14 @@
-import { StringUtils } from "../../utils/stringUtils";
-
 export default function decorate(block) {
   const data = fetchData(block);
   let wrapper = document.createElement("div");
 
-  if(StringUtils.isNotEmpty(data.title)) {
+  if(StringUtils.isStringNotEmpty(data.title)) {
     let titleEl = document.createElement("h2");
     titleEl.innerHTML = data.title;
     wrapper.appendChild(titleEl);
   }
 
-  if(StringUtils.isNotEmpty(data.reference)){
+  if(StringUtils.isStringNotEmpty(data.reference)){
     let referenceEl = document.createElement("img");
     referenceEl.src = data.reference;
     wrapper.appendChild(referenceEl);
@@ -31,4 +29,8 @@ const fetchData = (block) => {
   };
 
   return data;
+}
+
+function isStringNotEmpty(string) {
+  return string != null && string != "";
 }
