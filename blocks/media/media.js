@@ -1,7 +1,7 @@
 export default function decorate(block) {
   let content = 
-  <div>
+  `<div>
     <p>Some dummy content</p>
-  </div>
+  </div>`
   block.innerHTML = content;
 }
