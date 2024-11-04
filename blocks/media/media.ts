@@ -1,13 +1,14 @@
+import { addChildElement } from "../../utils/htmlUtils";
+
 export default function decorate(block) {
   const data = fetchData(block);
 
-  let content = `
-  <div>
-    <p>${data.title}</p>
-  </div>
-  `
+  let wrapper = document.createElement("div");
 
-  block.innerHTML = content;
+  let titleEl = addChildElement(wrapper, "h1");
+  titleEl.innerHTML = block.title;
+
+  block.innerHTML = wrapper;
 }
 
 const fetchData = (block) => {
@@ -23,7 +24,3 @@ const fetchData = (block) => {
 
   return data;
 }
-
-<div>
-<p>Some dummy content</p>
-</div>
