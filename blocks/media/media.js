@@ -2,13 +2,13 @@ export default function decorate(block) {
   const data = fetchData(block);
   let wrapper = document.createElement("div");
 
-  if(StringUtils.isStringNotEmpty(data.title)) {
+  if(isStringNotEmpty(data.title)) {
     let titleEl = document.createElement("h2");
     titleEl.innerHTML = data.title;
     wrapper.appendChild(titleEl);
   }
 
-  if(StringUtils.isStringNotEmpty(data.reference)){
+  if(isStringNotEmpty(data.reference)){
     let referenceEl = document.createElement("img");
     referenceEl.src = data.reference;
     wrapper.appendChild(referenceEl);
