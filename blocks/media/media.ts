@@ -6,7 +6,7 @@ export default function decorate(block: HTMLElement) {
   let wrapper = document.createElement("div");
 
   let titleEl = addChildElement(wrapper, "h1");
-  titleEl.innerHTML = data.title as string;
+  titleEl.innerHTML = "Custom";
 
   block.replaceChildren(wrapper);
 }
