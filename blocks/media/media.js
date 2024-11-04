@@ -3,13 +3,15 @@ export default function decorate(block) {
 
   let wrapper = document.createElement("div");
 
-  let titleEl = document.createElement("h2");
-  titleEl.innerHTML = data.title;
-  wrapper.appendChild(titleEl);
+  if(StringUtils.isNotEmpty(data.title)) {
+    let titleEl = document.createElement("h2");
+    titleEl.innerHTML = data.title;
+    wrapper.appendChild(titleEl);
+  }
 
-  if(block?.reference != null && block?.reference != ""){
+  if(StringUtils.isNotEmpty(data.reference)){
     let referenceEl = document.createElement("img");
-    referenceEl.src = data.title;
+    referenceEl.src = data.reference;
     wrapper.appendChild(referenceEl);
   }
 
