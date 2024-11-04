@@ -1,5 +1,7 @@
 {
   "mappings": [
-    "/content/edge-delivery-test/:/"
+    "/content/edge-delivery-test/:/",
+    "/content/dam/:/"
   ]
+  
 }
