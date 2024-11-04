@@ -3,4 +3,5 @@ export default function decorate(block) {
   <div>
     <p>Some dummy content</p>
   </div>
+  block.innerHTML = content;
 }
