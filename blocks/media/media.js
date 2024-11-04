@@ -1,6 +1,7 @@
+import { StringUtils } from "../../utils/stringUtils";
+
 export default function decorate(block) {
   const data = fetchData(block);
-
   let wrapper = document.createElement("div");
 
   if(StringUtils.isNotEmpty(data.title)) {
