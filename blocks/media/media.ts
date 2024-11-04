@@ -3,7 +3,7 @@ export default function decorate(block) {
 
   let wrapper = document.createElement("div");
 
-  let titleEl = createElement("h1");
+  let titleEl = document.createElement("h1");
   titleEl.innerHTML = "Custom";
   wrapper.appendChild(titleEl);
 
