@@ -3,14 +3,15 @@ export default async function decorate(block) {
   let wrapper = document.createElement("div");
   wrapper.className = "cmp-media";
 
-  if(isStringNotEmpty(data.title)) {
-    let titleEl = document.createElement("h2");
-    titleEl.innerHTML = data.title;
-    wrapper.appendChild(titleEl);
-  }
-
   if(isStringNotEmpty(data.reference)){
+    if(isStringNotEmpty(data.title)) {
+      let titleEl = document.createElement("h2");
+      titleEl.innerHTML = data.title;
+      wrapper.appendChild(titleEl);
+    }
+
     const assetInfoJson = await fetchAssetInfo(data.reference);
+
     if(assetInfoJson.valid) {
       if(assetInfoJson.type === "image") {
         let imageEl = document.createElement("img");
@@ -25,7 +26,6 @@ export default async function decorate(block) {
         videoEl.appendChild(videoSourceEl);
         wrapper.appendChild(videoEl);
       }
-      
     }
   }
 
