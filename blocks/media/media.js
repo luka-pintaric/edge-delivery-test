@@ -1,4 +1,4 @@
-export default function decorate(block) {
+export default async function decorate(block) {
   const data = fetchData(block);
   let wrapper = document.createElement("div");
 
@@ -9,9 +9,21 @@ export default function decorate(block) {
   }
 
   if(isStringNotEmpty(data.reference)){
-    let referenceEl = document.createElement("img");
-    referenceEl.src = data.reference;
-    wrapper.appendChild(referenceEl);
+    const assetInfoJson = await fetchAssetInfo(data.reference);
+    if(assetInfoJson.valid) {
+      if(assetInfoJson.type === "image") {
+        let imageEl = document.createElement("img");
+        imageEl.src = data.reference;
+        wrapper.appendChild(imageEl);
+      } else {
+        let videoEl = document.createElement("video");
+        let videoSourceEl = document.createElement("source")
+        videoEl.appendChild(videoSourceEl);
+        videoSourceEl.src(data.reference);
+        wrapper.appendChild(videoEl);
+      }
+      
+    }
   }
 
   block.replaceChildren(wrapper);
@@ -21,7 +33,7 @@ const fetchData = (block) => {
   const [titleContainer, referenceContainer] = block.children;
   
   const title = titleContainer?.querySelector('p')?.textContent?.trim();
-  const reference = referenceContainer?.querySelector('a')?.getAttribute('href') ?? referenceContainer?.querySelector('p')?.textContent?.trim();
+  const reference = referenceContainer?.querySelector('img')?.getAttribute('src') ?? referenceContainer?.querySelector('p')?.textContent?.trim();
 
   const data = {
     title: title,
@@ -29,6 +41,12 @@ const fetchData = (block) => {
   };
 
   return data;
+}
+
+const fetchAssetInfo = async (assetPath) => {
+  const url = `https://localhost:8443/bin/edgeDelivery/assetChecker?assetPath=${assetPath}`;
+  const jsonResponse = await fetch(url).then((response) => response.json());
+  return jsonResponse;
 }
 
 function isStringNotEmpty(string) {
