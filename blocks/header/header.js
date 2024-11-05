@@ -7,5 +7,5 @@ export default async function decorate(block) {
   </div>
   `;
 
-  wrapper.innerHTML(content);
+  wrapper.innerHTML = content;
 }
