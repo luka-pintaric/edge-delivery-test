@@ -1,6 +1,7 @@
 export default async function decorate(block) {
   const data = fetchData(block);
   let wrapper = document.createElement("div");
+  wrapper.className = "cmp-media";
 
   if(isStringNotEmpty(data.title)) {
     let titleEl = document.createElement("h2");
