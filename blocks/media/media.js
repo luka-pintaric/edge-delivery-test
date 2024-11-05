@@ -18,7 +18,7 @@ export default async function decorate(block) {
       } else {
         let videoEl = document.createElement("video");
         let videoSourceEl = document.createElement("source")
-        videoSourceEl.src(data.reference);
+        videoSourceEl.src = data.reference;
         videoEl.appendChild(videoSourceEl);
         wrapper.appendChild(videoEl);
       }
